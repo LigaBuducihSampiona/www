@@ -2,13 +2,52 @@
 	include "lib/db.php";
 	
 	$title = "Raspored";
-	//mozda je bolje iz cmda ?
-
 	$db = new DB();
-	$generacije = $db->query("SELECT id,ime from generacije");
-	$lige 		= $db->query("SELECT id,ime from lige");
 	
+	// user submitted filter
+	if (isset($_POST['submit'])) {
+		$sezona		= $_POST['sezona'];
+		$liga 		= $_POST['liga'];
+		$generacija = $_POST['generacija'];
+		$kolo 		= $_POST['kolo'];
+	// no filter
+	} else {
+		$sql = "
+			SELECT sezona_id sezona, lige.id liga, generacija_id generacija, kolo
+			FROM raspored, timovi, lige
+			WHERE raspored.tim_domaci_id=timovi.id
+				AND timovi.liga_id=lige.id
+				AND rezultat_domaci IS NOT NULL
+			ORDER BY datum DESC
+		";
+		$last = $db->query($sql);
+		$sezona		= $last[0]['sezona'];
+		$liga 		= $last[0]['liga'];
+		$generacija = $last[0]['generacija'];
+		$kolo 		= $last[0]['kolo'];
+	}
 	
+	$lige 		= $db->query("SELECT id,ime FROM lige");
+	$generacije = $db->query("SELECT id, ime FROM generacije");
+	$sezone		= $db->query("SELECT id, ime FROM sezone");
+	
+	//nije spojen FK raspored.tim_gosti_id
+	
+	$raspored = $db->query("
+		SELECT au.ime domacin,au2.ime gost, raspored.datum
+		FROM raspored
+		LEFT JOIN timovi AS au
+		ON raspored.tim_domaci_id = au.id
+		LEFT JOIN timovi AS au2
+		ON raspored.tim_gosti_id = au2.id
+		JOIN generacije AS gen
+		ON raspored.generacija_id = gen.id
+		JOIN sezone AS sez
+		ON raspored.sezona_id = sez.id
+		WHERE au.liga_id IN (SELECT id FROM lige WHERE id = {$liga}) AND gen.id = {$generacija} AND sez.id = {$sezona} AND raspored.kolo = {$kolo}
+		ORDER BY datum"
+	);
+
 	
 ?>
 <!DOCTYPE html>
@@ -24,36 +63,51 @@
 			<div id = "content">
 				<h2>Odaberite raspored:</h2><br>
 				<form method="post" class="filter">
-					Liga:&nbsp;
+					<label>Sezona:
+					<select name="sezona">
+						<? foreach ($sezone as $s): ?>
+						<option value="<?= $s['id'] ?>"><?= $s['ime'] ?></option>
+						<? endforeach ?>
+					</select></label>
+					<label>Liga:
 					<select name="liga">
 						<? foreach ($lige as $l): ?>
 						<option value="<?= $l['id'] ?>"><?= $l['ime'] ?></option>
 						<? endforeach ?>
-					</select>&nbsp;
-					generacija:&nbsp;
+					</select></label>
+					<label>Generacija:
 					<select name="generacija">
 						<? foreach ($generacije as $g): ?>
 						<option value="<?= $g['id'] ?>"><?= $g['ime'] ?></option>
 						<? endforeach ?>
-					</select>
-					<label for="kolo">kolo:</label>
-					<select name="kolo" id="kolo">
-						<!--<option value="0">*</option>-->
+					</select></label>
+					<label>Kolo:
+					<select name="kolo">
 						<? for($i=1; $i<=18; $i++): ?>
 						<option value="<?= $i ?>"><?= $i ?></option>
 						<? endfor ?>
-					</select>
+					</select></label>
 					<input type="submit" name="submit" value="Prikaži" />
 				</form>
-				<?php
-					if(isset($_POST['submit'])){
-						$liga = $_POST['liga'];
-						$generacija = $_POST['generacija'];
-						$kolo = $_POST['kolo'];
-						
-					}
-				?>
-							
+				
+				<?if(isset($raspored)):?>
+					<table>
+						<tr>
+							<td>Domacin</td>
+							<td>Gost</td>
+							<td>Vreme</td>
+						</tr>
+						<? foreach ($raspored as $r): ?>
+						<tr>
+							<td><?= $r['domacin']  ?></td>
+							<td><?= $r['gost']  ?></td>
+							<td><?= $r['datum']  ?></td>
+						</tr>
+						<? endforeach ?>
+					<table>
+				<? endif?>
+
+				
 				<h2>Raspored subota 14.11.2015.</h2>
 				<br>
 				<h4>2007. godište:<span style="margin-left:225px;">2008. godište:</span></h4>
