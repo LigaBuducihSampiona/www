@@ -1,6 +1,5 @@
 <?php
   header("Content-Type: application/xml");
-  // header("Content-Disposition: inline; filename=ligabuducihsampiona.xml");
 
   $server = "http://".$_SERVER['SERVER_NAME'];
   $lastmod = date("Y-m-d\TH:i:sP", strtotime("-8days"));
