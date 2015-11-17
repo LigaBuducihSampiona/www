@@ -70,6 +70,11 @@ th {
 	text-align: center;
 }
 
+.youtube-video {
+	width:640px;
+	height: 480px
+}
+
 .nav-toggle {display:none;}
 
 .header_baner {margin: 0 auto}
@@ -220,11 +225,17 @@ form.filter label {margin-left:10px}
 
 	body {
 		background-image:none;
-		padding-top: 48px;
+		padding-top: 72px;
 	}
 
 	.container {
 		width:100%;
+	}
+
+	.youtube-video {
+		width: 95%;
+		height:auto;
+		min-height: 240px
 	}
 
 	header {
@@ -235,13 +246,24 @@ form.filter label {margin-left:10px}
 		top:0;
 		left: 0;
 		width: 100%;
-		height:80px;
+		height:90px;
 		background:white;
 		box-sizing:border-box;
+		background: #427e26;
+		box-shadow: 0 2px 6px rgba(0,0,0, 0.5)
 	}
 
-	#logo {float:left;}
-	#logo img {height:64px;}
+	#logo {
+		float:left;
+		width:90px;
+		height: 90px;
+		text-align: center;
+		margin: 0 10px;
+	}
+	#logo img {
+		height:64px;
+		margin:10px 0;
+	}
 
 	.header_baner {float:right;margin:0;width:60%;}
 	.header_baner img {width:100%;float:right;}
@@ -249,7 +271,7 @@ form.filter label {margin-left:10px}
 	.social {
 		position: fixed;
 		left: 100%;
-		top:80px;
+		top:90px;
 		text-align: center;
 		width: 100%;
 		height:48px;
@@ -283,7 +305,7 @@ form.filter label {margin-left:10px}
 		height: 100%;
 		overflow:auto;
 		left:100%;
-		top:138px;
+		top:148px;
 		z-index: 999;
 		text-align: left;
 		transition: left 0.3s;
