@@ -1,48 +1,44 @@
 *{padding:0;margin:0;}
 
 @font-face {
-    font-family: 'Oswald';
-    src: url('oswald-bold-webfont.eot');
-    src: url('oswald-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('oswald-bold-webfont.woff') format('woff'),
-         url('oswald-bold-webfont.ttf') format('truetype'),
-         url('oswald-bold-webfont.svg#oswaldbold') format('svg');
-    font-weight: 300;
-    font-style: normal;
-
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Oswald Light'),
+  		 local('Oswald-Light'),
+  		 url(oswald-light.woff2) format('woff2');
 }
-
 @font-face {
-    font-family: 'Oswald';
-    src: url('oswald-light-webfont.eot');
-    src: url('oswald-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('oswald-light-webfont.woff') format('woff'),
-         url('oswald-light-webfont.ttf') format('truetype'),
-         url('oswald-light-webfont.svg#oswaldlight') format('svg');
-    font-weight: 100  ;
-    font-style: normal;
-
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oswald Regular'),
+  		 local('Oswald-Regular'),
+  		 url(oswald-regular.woff2) format('woff2');
 }
-
-
 @font-face {
-    font-family: 'Oswald';
-    src: url('oswald-regular-webfont.eot');
-    src: url('oswald-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('oswald-regular-webfont.woff') format('woff'),
-         url('oswald-regular-webfont.ttf') format('truetype'),
-         url('oswald-regular-webfont.svg#oswaldregular') format('svg');
-    font-weight: 500;
-    font-style: normal;
-
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Oswald Bold'),
+  		 local('Oswald-Bold'),
+  		 url(oswald-bold.woff2) format('woff2');
 }
+
 
 body{
 	padding:0;
 	margin:0;
-	font: 15px Oswald, Arial;
+	font:100 15px Oswald, Arial;
 	background:#fff url(../img/body.png) repeat-x 0 130px;
 	text-align:center
+}
+
+h1 {
+
+}
+h2 {
+	margin-top:24px;
 }
 
 .container {
@@ -55,6 +51,23 @@ header {
 	height:130px;
 	overflow:hidden;
 	text-align:center;
+}
+
+table {
+	border-collapse: collapse;
+	border:none;
+	width:100%;
+}
+td, th {
+	padding:5px;
+	border:none;
+	color:#333;
+}
+tr:nth-child(2n+1) td {background:#ddd;}
+th {
+	background: #427E26;
+	color:white;
+	text-align: center;
 }
 
 .nav-toggle {display:none;}
@@ -74,12 +87,12 @@ header {
 	height:24px
 }
 
-nav {height:41px;clear:both;background:#427e26;color:#fff;text-align:center}
+nav {font-weight:bold;height:41px;clear:both;background:#427e26;color:#fff;text-align:center}
 
 nav ul {
 	list-style-type:none;
 	padding:3px 0;
-	width:710px;
+	width:720px;
 	margin:0 auto;
 }
 
@@ -169,23 +182,32 @@ form.filter label {margin-left:10px}
 .photo-link:hover	{ border-color:#999; }
 
 #gallery ul{list-style-type:none;}
-#gallery ul li {margin: 5px;
-    padding: 5px;
-    border: 1px solid #000;
-    height: auto;
-    width: auto;
-    float: left;
-    text-align: center;/*padding:5px;display:block;float:left;*/}
+#gallery ul li {
+	margin: 5px;
+  padding: 5px;
+  border: 1px solid #000;
+  height: 160px;
+  width: 160px;
+  position: relative;
+  float: left;
+  text-align: center;/*padding:5px;display:block;float:left;*/
+}
 #gallery ul li .desc{
 	text-align: center;
   font-weight: normal;
  /* width: 120px;*/
-  margin: 5px;}
+  margin: 5px;
+  position: absolute;
+  bottom: 0;
+  left:0;
+  width: 160px;
+  text-align: center;
+}
  #gallery ul li img { display: inline;
     margin: 5px;
     border: 1px solid #ffffff;}
 #gallery a{clear:both;}
-#gallery a img{width:150px;height:150px;}
+#gallery a img{width:150px;}
 
 
 
