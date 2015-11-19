@@ -72,7 +72,7 @@ FROM
        ON raspored.tim_domaci_id  =  domaci.id
 	WHERE generacija_id LIKE  {$generacija}
     		AND sezona_id = {$sezona}
-    		AND domaci.liga_id IN (SELECT id FROM lige WHERE id = {$liga})
+    		AND domaci.liga_id IN (SELECT id FROM lige WHERE id = {$liga}) AND rezultat_gosti IS NOT NULL
 	
 	UNION ALL 
 	
@@ -80,7 +80,7 @@ FROM
 	FROM raspored
     JOIN  timovi gosti 
        ON raspored.tim_gosti_id  =  gosti.id
-	WHERE generacija_id LIKE  {$generacija} AND sezona_id = {$sezona} AND gosti.liga_id IN (SELECT id FROM lige WHERE id = {$liga})
+	WHERE generacija_id LIKE  {$generacija} AND sezona_id = {$sezona} AND gosti.liga_id IN (SELECT id FROM lige WHERE id = {$liga}) AND rezultat_gosti IS NOT NULL
 )a
 GROUP BY team
 ORDER BY score DESC , goal_diff DESC");
