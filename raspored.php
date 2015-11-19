@@ -1,5 +1,6 @@
-﻿<?php
-	include "lib/db.php";
+<?php
+	require "lib/db.php";
+	require "lib/functions.php";
 	
 	$title = "Raspored";
 	$db = new DB();
@@ -59,7 +60,7 @@
 		<div class="container">		
 			<?php include "template/header.php" ?>
 			
-			<?php include "template/navigation.php"?>
+			<?php include "template/navigation.php" ?>
 			<div id = "content">
 				<h2>Odaberite raspored:</h2><br>
 				<form method="post" class="filter">
@@ -90,25 +91,38 @@
 					<input type="submit" name="submit" value="Prikaži" />
 				</form>
 				
-				<?if(isset($raspored)):?>
+				<?//if( empty( $raspored ) )
+				//	echo "asdf";
+				?>
+				<?//if($raspored[0]=="")
+					//echo "asdf";
+				?>
+				
+				<?if(!empty($raspored)):?>
+				<?//if(isset($raspored)):?>
+					<h2>Raspored za <?=$kolo?>. kolo.</h2>
 					<table>
 						<tr>
-							<td>Domacin</td>
-							<td>Gost</td>
-							<td>Vreme</td>
+							<th style="text-align:right">Domacin</th>
+							<th></th>
+							<th style="text-align:left">Gost</th>
+							<th width="20%">Datum</th>
 						</tr>
 						<? foreach ($raspored as $r): ?>
 						<tr>
-							<td><?= $r['domacin']  ?></td>
+							<td align="right"><?= $r['domacin']  ?></td>
+							<td></td>
 							<td><?= $r['gost']  ?></td>
-							<td><?= $r['datum']  ?></td>
+							<td align="center"><?= format_date($r['datum'])  ?></td>
 						</tr>
 						<? endforeach ?>
 					<table>
-				<? endif?>
+				<?else:?>
+					<h2>Nema rezultata.</h2>
+				<?endif?>
 
 				
-				<h2>Raspored subota 14.11.2015.</h2>
+				<!--<h2>Raspored subota 14.11.2015.</h2>
 				<br>
 				<h4>2007. godište:<span style="margin-left:225px;">2008. godište:</span></h4>
 				<table border="1" cellspacing="5" style="float:left;" >
@@ -228,7 +242,7 @@
 					</tr>
 				</table>
 				
-				
+				-->
 				
 			</div>
 							
