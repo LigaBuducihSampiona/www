@@ -67,25 +67,25 @@
 					<label>Sezona:
 					<select name="sezona">
 						<? foreach ($sezone as $s): ?>
-						<option value="<?= $s['id'] ?>"><?= $s['ime'] ?></option>
+						<option value="<?= $s['id'] ?>" <? if($s['id']==$sezona): ?> selected="selected"<? endif ?>><?= $s['ime'] ?></option>
 						<? endforeach ?>
 					</select></label>
 					<label>Liga:
 					<select name="liga">
 						<? foreach ($lige as $l): ?>
-						<option value="<?= $l['id'] ?>"><?= $l['ime'] ?></option>
+						<option value="<?= $l['id'] ?>"<? if($l['id']==$liga): ?> selected="selected"<? endif ?>><?= $l['ime'] ?></option>
 						<? endforeach ?>
 					</select></label>
 					<label>Generacija:
 					<select name="generacija">
 						<? foreach ($generacije as $g): ?>
-						<option value="<?= $g['id'] ?>"><?= $g['ime'] ?></option>
+						<option value="<?= $g['id'] ?>"<? if($g['id']==$generacija): ?> selected="selected"<? endif ?>><?= $g['ime'] ?></option>
 						<? endforeach ?>
 					</select></label>
 					<label>Kolo:
 					<select name="kolo">
 						<? for($i=1; $i<=18; $i++): ?>
-						<option value="<?= $i ?>"><?= $i ?></option>
+						<option value="<?= $i ?>"<? if($i==$kolo): ?> selected="selected"<? endif ?>><?= $i ?></option>
 						<? endfor ?>
 					</select></label>
 					<input type="submit" name="submit" value="Prikaži" />

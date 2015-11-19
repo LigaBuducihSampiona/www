@@ -133,7 +133,7 @@ ORDER BY score DESC , goal_diff DESC");
 
 				
 				<?if(!empty($rezultati)):?>
-					<h2>Rezultati za <?=$kolo?>. kolo.</h2>
+					<h2>Rezultati <?=$kolo?>. kola</h2>
 					<table>
 						<tr>
 							<th style="text-align:right">Domaći</th>

@@ -18,7 +18,8 @@
 				<section>					
 					<!--  ***************slider*************-->
 					<h3>Najnovije vesti</h3>
-					<p>Poštovani,
+					<h3>Obaveštenje</h3>
+					<p>Poštovani,<br>
 						Nakon redovnog sastanka organizatora Lige Budućih Šampiona 
 						održanog 16. novembra 2015. godine, donešeni su sledeći zaključci:</p>
 						<h4>1. ORGANIZACIJA</h4>
