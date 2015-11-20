@@ -91,7 +91,7 @@ $getAlbum = @$_GET['album'];
 					<p><a href="galerija.php">&laquo; nazad</a></p>
 					<ul class="gallery">
 						<? foreach (read_album($getAlbum) as $photo): ?>
-						<li><a href="<?= ALBUM_DIR ?><?= $getAlbum ?>/<?= $photo ?>" rel="lightbox"><img src="<?= ALBUM_DIR ?><?= $getAlbum ?>/thumbs/<?= $photo ?>"></a></li>
+						<li><a href="<?= ALBUM_DIR ?><?= $getAlbum ?>/<?= $photo ?>" rel="lightbox-album"><img src="<?= ALBUM_DIR ?><?= $getAlbum ?>/thumbs/<?= $photo ?>"></a></li>
 						<? endforeach ?>
 					</ul>
 				<? endif ?>
