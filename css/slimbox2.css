@@ -43,7 +43,7 @@
 }
 
 #lbPrevLink:hover {
-	background: transparent url(prevlabel.gif) no-repeat 0 15%;
+	background: transparent url(prevlabel.gif) no-repeat 0 45%;
 }
 
 #lbNextLink {
@@ -51,7 +51,7 @@
 }
 
 #lbNextLink:hover {
-	background: transparent url(nextlabel.gif) no-repeat 100% 15%;
+	background: transparent url(nextlabel.gif) no-repeat 100% 45%;
 }
 
 #lbBottom {
