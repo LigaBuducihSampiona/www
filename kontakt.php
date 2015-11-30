@@ -8,16 +8,21 @@
 		if (empty($data['name'])) {
 			$alert = "Morate uneti ime.";
 		} else if(empty($data['email'])) {
+			$alert = "Morate email.";
 		} else if(empty($data['message'])) {		
+			$alert = "Morate uneti tekst poruke.";
 		} else {
-			$to = "";
-			$subject = "Kontakt sa sajta od";
-			$message = $data['poruka'];
-			$header = "From: no-reply@" . $_SERVER['SERVER_NAME'];
+			$to = "office@ligabuducihsampiona.rs";
+			$subject = "Kontakt sa sajta od: ";
+			$subject .= $data['email'];
+			$message = $data['message'];
+			$header = "Content-type:text/html;charset=UTF-8" . "\r\n";
+			$header .= "From: no-reply@" . $_SERVER['SERVER_NAME'];
+			
 			if (mail($to, $subject, $message, $header)) {
-				// POSLATO
+				$alert = "Poslato.";
 			} else {
-				// nije POSLATO
+				$alert = "Nije poslato.";
 			}
 		}
 	}
@@ -70,12 +75,38 @@
 				<div class="map">
 					<h3>Pronađite nas</h3>
 					<!--<div id="map"></div>-->
-					<p>
-					 Trebinjska<br> Beograd<br>
-					Telefon: +38111 123 123,<br>&emsp;&emsp;&emsp;+38111 123 1234<br>
-				   E-mail: <a href="mailto:mail@mail.rs">mail@mail.rs</a>
-					</p>
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2831.511932085126!2d20.484505015777536!3d44.79075468614566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a707ca41c98d3%3A0xdf4ab715c7910b8a!2sSOS+kanal!5e0!3m2!1sen!2srs!4v1444503071631" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+					<table cellspacing="10">
+						<tr>
+							<td>Sedište:
+							<td>Trebinjska, Beograd
+						</tr>
+						<tr>
+							<td colspan="2">Kontakt telefoni:
+						</tr>
+						<tr>
+							<td>Za područje Vojvodine
+							<td>+38163 1071 333
+						</tr>
+						<tr>
+							<td>Za područje Srbije
+							<td>+38164 111 4954
+						</tr>
+						<tr>
+							<td>Za područje Beograda
+							<td>+38165 355 8930
+						</tr>
+						<!--<tr>
+							<td colspan="2">E-mail: <a href="mailto:office@ligabuducihsampiona.rs">office@ligabuducihsampiona.rs</a>
+						</tr>-->
+					</table>
+					
+					<!--<p>Ulica: Trebinjska, Beograd<br>
+					Telefoni:<br>&emsp;Za područje Vojvodine: +38163 1071 333
+							<br>&emsp;Za područje Srbije: +38164 111 4954
+							<br>&emsp;Za Beograd: +38165 355 8930<br>
+				   E-mail: <a href="mailto:office@ligabuducihsampiona.rs">office@ligabuducihsampiona.rs</a>
+					</p>-->
+					<iframe style="margin-top:10px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2831.511932085126!2d20.484505015777536!3d44.79075468614566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a707ca41c98d3%3A0xdf4ab715c7910b8a!2sSOS+kanal!5e0!3m2!1sen!2srs!4v1444503071631" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
 				</div>
 			</div>
 			

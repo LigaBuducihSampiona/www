@@ -1,7 +1,6 @@
 ﻿<?php
 
-	$title = "Home";
-
+	$title = "Home";	
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,6 +17,11 @@
 				<section>					
 					<!--  ***************slider*************-->
 					<h3>Najnovije vesti</h3>
+					
+					<h4>Pregled drugog kola</h4>
+					<iframe style="padding-left:15px;" class="youtube-video" src="https://www.youtube.com/embed/H4b-4U-0rw0" frameborder="0" allowfullscreen></iframe>
+					
+					
 					<h3>Obaveštenje</h3>
 					<p>Poštovani,<br>
 						Nakon redovnog sastanka organizatora Lige Budućih Šampiona 
@@ -55,7 +59,6 @@
 						OPREME.<br>
 						Liga Budućih Šampiona
 						</p>
-					
 
 					<!--<div id="sliderFrame">
 						<div id="slider">
@@ -81,13 +84,10 @@
 						Na stranici <a href="rezultati.php">rezultata</a> možete pogledati tabele i rezultate.
 					</p>
 					 <iframe style="padding-left:15px;" class="youtube-video" src="https://www.youtube.com/embed/MoDWueAq7dU" frameborder="0" allowfullscreen></iframe>
-					 
-					 
-					
 				</section>
-				<!--<aside><? include "template/tabela.php" ?></aside>-->
+				
+				
 			</div>
-			
 			<?php include "template/footer.php" ?>
 		</div>
 	</body>

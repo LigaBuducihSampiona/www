@@ -5,6 +5,8 @@
 	$title = "Rezultati";
 	$db = new DB();
 	
+	$max_kolo_query = $db->query("SELECT MAX(kolo) max_kolo FROM raspored");
+	$max_kolo = $max_kolo_query[0]['max_kolo'];
 	if (isset($_POST['submit'])) {
 		$sezona		= $_POST['sezona'];
 		$liga 		= $_POST['liga'];
@@ -124,7 +126,7 @@ ORDER BY score DESC , goal_diff DESC");
 					</select></label>
 					<label>Kolo:
 					<select name="kolo">
-						<? for($i=1; $i<=18; $i++): ?>
+						<? for($i=1; $i<=$max_kolo; $i++): ?>
 						<option value="<?= $i ?>"<? if($i==$kolo): ?> selected="selected"<? endif ?>><?= $i ?></option>
 						<? endfor ?>
 					</select></label>

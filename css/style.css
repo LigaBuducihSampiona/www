@@ -63,6 +63,7 @@ td, th {
 	border:none;
 	color:#333;
 }
+/*tr:nth-child(2n+1) td {background:#ddd;}*/
 tr:nth-child(2n+1) td {background:#ddd;}
 th {
 	background: #427E26;
@@ -118,7 +119,10 @@ nav ul li:last-child  {
 
 nav ul li a {text-align:center;}
 
-aside{width:20%;float:left;background:#427e26;}
+aside{width:20%;float:left;background:#427e26;color:white;}
+aside td{color:white;}
+aside tr:nth-child(2n+1) td {background:#427e26;}
+
 a, a:visited {
 	outline:none;
 	text-decoration:none;
@@ -133,7 +137,7 @@ a, a:visited {
 #content section{width:100%;float:left}
 #content section.p50{width:50%}
 #content section img {width:50%;}
-#content aside{color:#fff;float:right;width:18%;padding:10px;box-sizing:border-box;}
+#content aside{color:#fff;float:right;width:30%;padding:10px;box-sizing:border-box;}
 #content aside h1 {}
 #content aside h2 {}
 #content aside table {margin:3%;color:white;border-collapse:collapse;border:none;margin:0;}
